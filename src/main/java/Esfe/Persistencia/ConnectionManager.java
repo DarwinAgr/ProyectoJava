@@ -22,7 +22,7 @@ public class ConnectionManager {
      * - user=dev : Nombre de usuario para la autenticación.
      * - password=dev : Contraseña para la autenticación.
      */
-    private static final String STR_CONNECTION = "jdbc:sqlserver://http://ProyectoJava.mssql.somee.com; " +
+    private static final String STR_CONNECTION = "jdbc:sqlserver://ProyectoJava.mssql.somee.com:1433;" +
             "encrypt=true; " +
             "database=ProyectoJava; " +
             "trustServerCertificate=true;" +
