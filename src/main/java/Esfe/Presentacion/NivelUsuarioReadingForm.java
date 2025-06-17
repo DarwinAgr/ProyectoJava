@@ -122,12 +122,12 @@ public class NivelUsuarioReadingForm extends JDialog{
 
         // Define las columnas de la tabla. Los nombres de las columnas corresponden
         // a los atributos que se mostrarán de cada objeto User.
-        model.addColumn("Id");
+        model.addColumn("IdNivel");
         model.addColumn("Nombre");
         model.addColumn("Descripcion");
         model.addColumn("Puntos minimos");
         model.addColumn("Puntos maximos");
-        model.addColumn("IdPrivilegio");
+        model.addColumn("Privilegio");
         model.addColumn("Status");
 
         // Establece el modelo de tabla creado como el modelo de datos para la
@@ -151,10 +151,10 @@ public class NivelUsuarioReadingForm extends JDialog{
             model.setValueAt(nivel.getDescription(), i, 2);
             model.setValueAt(nivel.getMinPoint(), i, 3);
             model.setValueAt(nivel.getMaxPoint(), i, 4);
-            model.setValueAt(nivel.getIdPrivilegio(), i, 5);
+            model.setValueAt(nivel.getPrivilegioName(), i, 5);
             // Establece el valor del estatus del usuario (probablemente obtenido a través de un método 'getStrEstatus()')
             // en la celda correspondiente de la fila actual (columna 3).
-            model.setValueAt(nivel.getStatus(), i, 6);
+            model.setValueAt(nivel.getStrStatus(), i, 6);
         }
 
         // Llama al método 'hideCol' para ocultar la columna con índice 0 (la columna del ID).

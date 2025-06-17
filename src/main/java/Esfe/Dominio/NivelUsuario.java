@@ -9,6 +9,11 @@ public class NivelUsuario {
     private int status;
     private int idPrivilegio;
 
+    private String privilegioName;
+
+    public String getPrivilegioName(){ return privilegioName;}
+    public void setPrivilegioName(String privilegioName){this.privilegioName = privilegioName;}
+
     public NivelUsuario() {
     }
 
@@ -77,4 +82,20 @@ public class NivelUsuario {
     public void setIdPrivilegio(int idPrivilegio) {
         this.idPrivilegio = idPrivilegio;
     }
+
+    public String getStrStatus(){
+        String str="";
+        switch (status) {
+            case 1:
+                str = "ACTIVO";
+                break;
+            case 2:
+                str = "INACTIVO";
+                break;
+            default:
+                str = "";
+        }
+        return str;
+    }
+
 }

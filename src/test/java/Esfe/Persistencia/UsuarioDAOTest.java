@@ -122,7 +122,7 @@ class UsuarioDAOTest {
 
     @Test
     void createUsuario() throws SQLException {
-        Usuario usuario = new Usuario(0, "admin", "12345", "admin@gmail.com", 1, 1);
+        Usuario usuario = new Usuario(0, "dw", "12345", "dw@gmail.com", 1, 1);
         Usuario res = usuarioDAO.create(usuario);
         assertNotNull(res);
     }

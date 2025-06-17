@@ -59,7 +59,7 @@ public class NivelUsuarioDAO {
         boolean res = false;
         try {
             ps = conn.connect().prepareStatement(
-                    "UPDATE NivelUsuario SET name = ?, description = ?, minPoint = ?, maxPoint = ?, status = ?, idPrivilegio = ? "
+                    "UPDATE NivelUsuario SET name = ?, description = ?, minPoint = ?, maxPoint = ?, status = ?, idPrivilegio = ? WHERE idNivel = ? "
             );
 
             ps.setString(1, nivelUsuario.getName());
@@ -68,6 +68,7 @@ public class NivelUsuarioDAO {
             ps.setInt(4, nivelUsuario.getMaxPoint());
             ps.setInt(5, nivelUsuario.getStatus());
             ps.setInt(6, nivelUsuario.getIdPrivilegio());
+            ps.setInt(7, nivelUsuario.getIdNivel());
 
             if (ps.executeUpdate() > 0) {
                 res = true;
@@ -108,7 +109,11 @@ public class NivelUsuarioDAO {
 
         try {
             ps = conn.connect().prepareStatement(
-                    "SELECT idNivelUsuario, name, description, minPoint, maxPoint, status, idPrivilegio FROM NivelUsuario WHERE name LIKE ?"
+                    "SELECT n.idNivel, n.name, n.description, n.minPoint, n.maxPoint, n.status,\n" +
+                            "       n.idPrivilegio, p.name AS PrivilegioAsignado \n" +
+                            "FROM NivelUsuario n \n" +
+                            "JOIN Privilegio p ON n.idPrivilegio = p.idPrivilegio \n" +
+                            "WHERE n.name LIKE ? \n"
             );
 
             ps.setString(1, "%" + name + "%");
@@ -124,6 +129,7 @@ public class NivelUsuarioDAO {
                 nivelUsuario.setMaxPoint(rs.getInt("maxPoint"));
                 nivelUsuario.setStatus(rs.getInt("status"));
                 nivelUsuario.setIdPrivilegio(rs.getInt("idPrivilegio"));
+                nivelUsuario.setPrivilegioName(rs.getString("privilegioAsignado"));
 
                 records.add(nivelUsuario);
             }

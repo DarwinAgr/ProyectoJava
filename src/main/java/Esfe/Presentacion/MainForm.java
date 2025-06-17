@@ -2,6 +2,8 @@ package Esfe.Presentacion;
 
 import javax.swing.*; // Importa el paquete javax.swing, que proporciona clases para crear interfaces gráficas de usuario (GUI) en Java Swing (como JFrame, JPanel, JButton, JLabel, JTextField, JPasswordField, JOptionPane, etc.).
 import Esfe.Dominio.Usuario; // Importa la clase User desde el paquete esfe.dominio. Esta clase  representa la entidad de usuario con sus atributos (id, nombre, email, contraseña, estado, etc.).
+import Esfe.Dominio.NivelUsuario; // Importa la clase User desde el paquete esfe.dominio. Esta clase  representa la entidad de usuario con sus atributos (id, nombre, email, contraseña, estado, etc.).
+import Esfe.Dominio.Privilegio; // Importa la clase User desde el paquete esfe.dominio. Esta clase  representa la entidad de usuario con sus atributos (id, nombre, email, contraseña, estado, etc.).
 
 public class MainForm extends JFrame {
 
@@ -62,6 +64,18 @@ public class MainForm extends JFrame {
         itemUsers.addActionListener(e -> { // Agrega un ActionListener al elemento "Usuarios".
             UserReadingForm userReadingForm=new UserReadingForm(this); // Cuando se hace clic, crea una nueva instancia de UserReadingForm (formulario para leer/listar usuarios), pasándole la instancia actual de MainForm como padre.
             userReadingForm.setVisible(true); // Hace visible el formulario de lectura de usuarios.
+        });
+        JMenuItem itemPrivilegios = new JMenuItem("Privilegios"); // Crea un nuevo elemento de menú llamado "Usuarios".
+        menuMantenimiento.add(itemPrivilegios); // Agrega el elemento "Usuarios" al menú "Mantenimientos".
+        itemPrivilegios.addActionListener(e -> { // Agrega un ActionListener al elemento "Usuarios".
+            PrivilegioReadingForm privilegioReadingForm=new PrivilegioReadingForm(this); // Cuando se hace clic, crea una nueva instancia de UserReadingForm (formulario para leer/listar usuarios), pasándole la instancia actual de MainForm como padre.
+            privilegioReadingForm.setVisible(true); // Hace visible el formulario de lectura de usuarios.
+        });
+        JMenuItem itemNiveles = new JMenuItem("Niveles de Usuarios"); // Crea un nuevo elemento de menú llamado "Usuarios".
+        menuMantenimiento.add(itemNiveles); // Agrega el elemento "Usuarios" al menú "Mantenimientos".
+        itemNiveles.addActionListener(e -> { // Agrega un ActionListener al elemento "Usuarios".
+            NivelUsuarioReadingForm nivelReadingForm=new NivelUsuarioReadingForm(this); // Cuando se hace clic, crea una nueva instancia de UserReadingForm (formulario para leer/listar usuarios), pasándole la instancia actual de MainForm como padre.
+            nivelReadingForm.setVisible(true); // Hace visible el formulario de lectura de usuarios.
         });
 
     }

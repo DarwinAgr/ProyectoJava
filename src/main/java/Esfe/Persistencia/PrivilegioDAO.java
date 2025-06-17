@@ -57,12 +57,13 @@ public class PrivilegioDAO {
         boolean res = false;
         try {
             ps = conn.connect().prepareStatement(
-                    "UPDATE Privilegio SET name = ?, description = ?, status = ? "
+                    "UPDATE Privilegio SET name = ?, description = ?, status = ? WHERE idPrivilegio= ? "
             );
 
             ps.setString(1, privilegio.getName());
             ps.setString(2, privilegio.getDescription());
             ps.setInt(3, privilegio.getStatus());
+            ps.setInt(4, privilegio.getIdPrivilegio());
 
             if (ps.executeUpdate() > 0) {
                 res = true;
