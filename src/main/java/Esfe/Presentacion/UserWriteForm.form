@@ -89,7 +89,7 @@
         </constraints>
         <properties>
           <background color="-13540954"/>
-          <enabled value="false"/>
+          <enabled value="true"/>
           <text value="OK"/>
         </properties>
       </component>
@@ -99,7 +99,7 @@
         </constraints>
         <properties>
           <background color="-5617079"/>
-          <enabled value="false"/>
+          <enabled value="true"/>
           <text value="CANCELAR"/>
         </properties>
       </component>
