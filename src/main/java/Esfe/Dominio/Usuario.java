@@ -82,4 +82,14 @@ public class Usuario {
         }
         return str;
     }
+    private String nivelUsuarioName;
+
+    public String getNivelUsuarioName() {
+        return nivelUsuarioName;
+    }
+
+    public void setNivelUsuarioName(String nivelUsuarioName) {
+        this.nivelUsuarioName = nivelUsuarioName;
+    }
+
 }

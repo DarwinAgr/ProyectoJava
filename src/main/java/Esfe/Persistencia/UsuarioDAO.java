@@ -107,7 +107,11 @@ public class UsuarioDAO {
 
         try {
             ps = conn.connect().prepareStatement(
-                    "SELECT idUsuario, name, passwordHash, email, status, idNivelUsuario FROM Usuario WHERE name LIKE ?"
+                    "SELECT u.idUsuario, u.name, u.passwordHash, u.email, u.status,\n" +
+                            "       u.idNivelUsuario, n.name AS nivelUsuarioName\n" +
+                            "FROM Usuario u\n" +
+                            "JOIN NivelUsuario n ON u.idNivelUsuario = n.idNivel\n" +
+                            "WHERE u.name LIKE ?\n"
             );
 
             ps.setString(1, "%" + name + "%");
@@ -122,6 +126,7 @@ public class UsuarioDAO {
                 usuario.setEmail(rs.getString("email"));
                 usuario.setStatus(rs.getInt("status"));
                 usuario.setIdNivelUsuario(rs.getInt("idNivelUsuario"));
+                usuario.setNivelUsuarioName(rs.getString("nivelUsuarioName"));
 
                 records.add(usuario);
             }
